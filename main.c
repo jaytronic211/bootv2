@@ -20,11 +20,15 @@ int chklock(void);
 
 void main(void) {
  init();
+ int lock = 0x00;
+ while(1){
+     PORTB = 0xf3;
+ lock = chklock();}
  
  
         
     
-    return;
+ return;
 }
 
 int chklock(void){
@@ -43,5 +47,5 @@ TRISA = 0b00000000;
 TRISB = 0b11100000;
 ANSEL = 0b00000000;
 OSCCON = 0b00111110;
-__delay_ms(1000);
+//__delay_ms(1000);
 }
