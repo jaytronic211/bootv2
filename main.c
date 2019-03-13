@@ -21,9 +21,24 @@ int chklock(void);
 void main(void) {
  init();
  int lock = 0x00;
+ 
+ 
  while(1){
-     PORTB = 0xf3;
- lock = chklock();}
+ if (chklock()){
+  __delay_ms(1000);
+  __delay_ms(1000);
+  __delay_ms(1000);
+  if (chklock()){
+      unlock();
+  }
+  
+     
+     
+     
+ }
+ 
+ 
+ }
  
  
         
@@ -40,6 +55,12 @@ int chklock(void){
     else{
     return 1;    
     }
+}
+
+
+void unlock(void){
+    
+    return 0;
 }
 
 void init(void){
