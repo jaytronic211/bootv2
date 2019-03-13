@@ -30,10 +30,12 @@ void main(void) {
 int chklock(void){
     int lockstate = PORTB;
     lockstate = (lockstate && 0b00000001);
-    
-    
-    
-    
+    if(lockstate == 0b00000001){
+    return 0;    
+    }
+    else{
+    return 1;    
+    }
 }
 
 void init(void){
