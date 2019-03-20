@@ -13,36 +13,47 @@
 void init(void);
 void unlock(void);
 void lock(void);
+void light(void);
 int chklid(void);
 int chklock(void);
 
 
 
 void main(void) {
- init();
- int lock = 0x00;
- 
- 
- while(1){
- if (chklock()){
-  __delay_ms(1000);
-  __delay_ms(1000);
-  __delay_ms(1000);
-  if (chklock()){
-      unlock();
-  }
-  
-     
-     
-     
- }
- 
- 
- }
- 
- 
-        
+
+int i;
+int x;
     
+ init();
+ while(1){
+     
+     
+ while(!chklock()){
+     NOP();    
+ }
+ 
+// __delay_ms(3000);
+ 
+ 
+ for(i = 0; i < 10000; i++){
+     for(x = 0; x < 12; x++){
+     if(chklock()){
+         i = 10000;
+     }
+     }
+ }
+ unlock();
+/*
+ __delay_ms(1000);
+  while(chklid());
+ __delay_ms(10000);
+ lock();
+ 
+ 
+*/
+
+
+ }      
  return;
 }
 
@@ -60,7 +71,15 @@ int chklock(void){
 
 void unlock(void){
     
-    return 0;
+    NOP();
+}
+
+void lock(void){
+    NOP();
+}
+
+void light(void){
+    NOP();
 }
 
 void init(void){
